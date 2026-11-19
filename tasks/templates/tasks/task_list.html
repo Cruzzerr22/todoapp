@@ -1,0 +1,26 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="card">
+                <h3 class="{% if task.completed %}done{% endif %}">
+                    {{ task.title }}
+                    <span class="priority-{{ task.priority }}">[{{ task.priority }}]</span>
+                </h3>
+                <p>{{ task.description }}</p>
+                <p><strong>Due:</strong> {{ task.due_date }} |
+                   <strong>Status:</strong> {% if task.completed %}✅ Completed{% else %}⏳ Pending{% endif %}</p>
+                <a href="{% url 'toggle_complete' task.pk %}" class="btn btn-success">
+                    {% if task.completed %}Mark Pending{% else %}Mark Complete{% endif %}
+                </a>
+                <a href="{% url 'update_task' task.pk %}" class="btn">Edit</a>
+                <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="card">
+            <p>No tasks yet. <a href="{% url 'create_task' %}">Create your first task!</a></p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Tasks{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; padding: 0 15px; background: #f5f5f5; }
+        .card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.1); margin-bottom: 15px; }
+        .btn { display: inline-block; padding: 8px 14px; background: #007bff; color: #fff; border-radius: 4px; text-decoration: none; border: none; cursor: pointer; }
+        .btn-danger { background: #dc3545; }
+        .btn-success { background: #28a745; }
+        .btn-secondary { background: #6c757d; }
+        .done { text-decoration: line-through; color: #888; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        input, textarea, select { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .priority-High { color: #dc3545; font-weight: bold; }
+        .priority-Medium { color: #fd7e14; font-weight: bold; }
+        .priority-Low { color: #28a745; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1>📝 My Tasks</h1>
+        <div>
+            {% if user.is_authenticated %}
+                Hi, {{ user.username }} |
+                <a href="{% url 'task_list' %}">Home</a> |
+                <a href="{% url 'create_task' %}">+ New Task</a> |
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
