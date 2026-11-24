@@ -41,7 +41,7 @@ ROOT_URLCONF = 'todoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'tasks', 'templates', 'tasks')],
+        'DIRS': [os.path.join(BASE_DIR, 'tasks', 'templates')],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
