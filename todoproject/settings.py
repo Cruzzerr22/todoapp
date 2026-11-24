@@ -41,7 +41,7 @@ ROOT_URLCONF = 'todoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'tasks' / 'templates'],  # Points to the parent 'templates' folder
+        'DIRS': [BASE_DIR / 'tasks' / 'Templates'],  # Points to the parent 'templates' folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,3 +106,6 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "task_list"
 LOGOUT_REDIRECT_URL = "login"
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
