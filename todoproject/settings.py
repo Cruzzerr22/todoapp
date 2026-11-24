@@ -1,3 +1,4 @@
+from asyncio import tasks
 import os
 from pathlib import Path
 import dj_database_url
@@ -41,7 +42,7 @@ ROOT_URLCONF = 'todoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'tasks', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'tasks', 'templates', 'registration'/tasks)],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
